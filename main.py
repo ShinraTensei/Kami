@@ -29,17 +29,24 @@ def run():
 
         #Logic
         keys = pygame.key.get_pressed()
-        #if(keys[pygame.key.key_code("A")]):
-            #plr.move_left(deltaTime)
-        #elif(keys[pygame.key.key_code("D")]):
-            #plr.move_right(deltaTime)
-        #else:
-            #plr.idle_anim()
-        
+        if(keys[pygame.key.key_code("A")]):
+            plr.move(deltaTime, LEFT)
+        elif(keys[pygame.key.key_code("D")]):
+            plr.move(deltaTime, RIGHT)
+        elif(keys[pygame.key.key_code("W")]):
+            plr.move(deltaTime, UP)
+        elif(keys[pygame.key.key_code("S")]):
+            plr.move(deltaTime, DOWN)
+        else:
+            if(plr.direction == LEFT or plr.direction == RIGHT):
+                plr.animate(plr.sprite_idle_horizontal, plr.animationSpeed_idle)
+            elif(plr.direction == UP):
+                plr.animate(plr.sprite_idle_vertical_up, plr.animationSpeed_idle)
+            else:
+                plr.animate(plr.sprite_idle_vertical_down, plr.animationSpeed_idle)
         plr.draw(screen, deltaTime)
-        
-        pygame.display.flip()
 
+        pygame.display.flip()
         # deltaTime in seconds.
         deltaTime = (t - getTicksLastFrame) / 1000.0
         getTicksLastFrame = t

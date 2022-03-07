@@ -1,21 +1,19 @@
 import pygame
 from constants import *
+from Vector import *
 
 class SpriteSheet(object):
-    def __init__(self, file_path, frame_data):
+    def __init__(self, file_path):
         self.sprite_sheet = pygame.image.load(file_path).convert_alpha()
 
-        for i in frame_data:
-            self.get_image(frame_data, i)
-
+    def make_animation(self, frame_data, scale):
+        frames = []
+        for frame in frame_data:
+            frames.append(self.get_image(frame, scale))
+        return frames
     
-    def get_image(self, img_vec, index):
-
-        #Testing shit
-        width = img_vec[index].getW()
-        height = img_vec[index].getH()
-
-        image = pygame.Surface([40, 40]).convert_alpha()
-
-        image.blit(self.sprite_sheet, (0, 0), img_vec[index])
+    def get_image(self, frame, scale):
+        image = pygame.Surface([frame.w, frame.h]).convert_alpha()
+        image.blit(self.sprite_sheet, (0, 0), (frame.x, frame.y, frame.w, frame.h))
+        image = pygame.transform.scale(image, (frame.w*scale, frame.h*scale))
         return image

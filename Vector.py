@@ -4,14 +4,3 @@ class Vector:
         self.y = y
         self.w = w
         self.h = h
-
-    def getX():
-        return self.x
-    def getY():
-        return self.y
-    def getW():
-        return self.w
-    def getH():
-        return self.h
-    def getSize():
-        return (self.w, self.h)
