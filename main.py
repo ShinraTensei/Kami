@@ -29,12 +29,13 @@ def run():
 
         #Logic
         keys = pygame.key.get_pressed()
-        if(keys[pygame.key.key_code("A")]):
-            plr.move_left(deltaTime)
-        if(keys[pygame.key.key_code("D")]):
-            plr.move_right(deltaTime)
-
-        plr.idle_anim()
+        #if(keys[pygame.key.key_code("A")]):
+            #plr.move_left(deltaTime)
+        #elif(keys[pygame.key.key_code("D")]):
+            #plr.move_right(deltaTime)
+        #else:
+            #plr.idle_anim()
+        
         plr.draw(screen, deltaTime)
         
         pygame.display.flip()
